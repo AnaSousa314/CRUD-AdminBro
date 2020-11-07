@@ -29,7 +29,26 @@ AdminBro.registerAdapter(AdminBroMongoose);
 /* middleware */
 const adminBroOptions = new AdminBro({
     //databases:[],
-    resources:[Project],
+    //resources:[Project],
+
+    resources:[{
+        resource: Project,
+        options:{
+            properties:{
+                description: { type: 'richtext'},
+                created_at:{
+                    isVisible :{ edit: false, list: true, show: true, filter: true}
+                }
+            }
+        }
+    }],
+    locale:{
+        translations:{
+            labels:{
+                Project: "Meus Projetos",
+            }
+        }
+    },
     rootPath: "/admin"
 });
 
